@@ -11,7 +11,7 @@ const ListTodos = () => {
 
     const deleteTodo = async (id) => {
         try {
-            const deleteTodo = await fetch(`http://localhost:5001/todos/${id}`, {
+            const deleteTodo = await fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/todos/${id}`, {
                 method: "DELETE"
 
         });
@@ -26,7 +26,7 @@ const ListTodos = () => {
     const getTodos = async() => {
         try {
 
-            const response = await fetch("http://localhost:5001/todos");
+            const response = await fetch(`${process.env.REACT_APP_API_URL || "http://localhost:5001"}/todos`);
             const jsonData = await response.json();
 
             setTodos(jsonData);
